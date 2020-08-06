@@ -1,0 +1,29 @@
+<main role="main">
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <p>Most popular</p>
+      <div class="row">
+        <div [hidden]="!loading">Loading...</div>
+        <div *ngIf="loading || !items.length || items.length === 0">No results</div>
+        <div class="col-md-3" *ngFor="let key of items; let i = index;">
+          <div class="card mb-3 box-shadow">
+            <a href="https://www.youtube.com/watch?v={{key.id}}" target="_blank">
+              <img class="card-img-top" src="https://img.youtube.com/vi/{{key.id}}/hqdefault.jpg" [alt]="key.snippet.title">
+            </a>
+            <div class="card-body">
+              <p class="card-text">{{key.snippet.title}}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">{{key.snippet.channelTitle}}</button>
+                </div>
+                <small class="text-muted">{{i+1}}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
